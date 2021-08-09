@@ -4,14 +4,22 @@ var express = require('express');
 // fazendo o retorno da funcao express
 var app = express();
 
-// funcao de callback com o metodo Send (para Express, Node é End) para resolver o Cannot GET /
+// Apontamento para o renderizador de html EJS
+app.set('view engine', 'ejs');
+
+// Com EJS instalado, usamos o metodo render
 app.get('/', function(req, res){
-    res.send(`<html><body>Portal de Notícias</body></html>`);
+    res.render(`home/index`);
 })
 
-app.get('/tecnologia', function(req, res){
-    res.send(`<html><body>Notícias de Tecnologia</body></html>`);
+app.get('/formulario_inclusao_noticia', function(req, res){
+    res.render(`admin/form_add_noticia`);
 })
+
+app.get('/noticias', function(req, res){
+    res.render(`noticias/noticias`);
+})
+
 
 // Chamando a porta com Listen atraves de uma funcao de callback
 app.listen(3000, function(){
