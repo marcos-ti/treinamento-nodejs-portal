@@ -1,27 +1,18 @@
-// incorporando o framework para aplicacoes web EXPRESS com a funcao require
-var express = require('express');
+// Recuperando app
+var app = require('./config/server');
 
-// fazendo o retorno da funcao express
-var app = express();
+// Incluindo um modulo dentro da aplicacao
+var rotaNoticias = require('./app/routes/noticias');
+// Executando a funcao passando app como parametro
+rotaNoticias(app);
+// Diminuindo codigo require
+var rotaHome = require('./app/routes/home')(app); // Retorna a excucao da funcao
 
-// Apontamento para o renderizador de html EJS
-app.set('view engine', 'ejs');
 
-// Com EJS instalado, usamos o metodo render
-app.get('/', function(req, res){
-    res.render(`home/index`);
-})
-
-app.get('/formulario_inclusao_noticia', function(req, res){
-    res.render(`admin/form_add_noticia`);
-})
-
-app.get('/noticias', function(req, res){
-    res.render(`noticias/noticias`);
-})
-
+var rotaFormularioInclusaoNoticia = require('./app/routes/formulario_inclusao_noticia');
+rotaFormularioInclusaoNoticia(app);
 
 // Chamando a porta com Listen atraves de uma funcao de callback
 app.listen(3000, function(){
-    console.log(`Servidor rodando com Express`);
+    console.log(`Servidor ON`);
 });
