@@ -14,7 +14,10 @@ app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
 // Inclusao do diretorio Routes
-consign().include('app/routes').into(app);
+consign()
+.include('app/routes')
+.then('config/dbConnection.js')
+.into(app);
 
 // Modulo retornando a variavel app
 module.exports = app;
