@@ -1,14 +1,14 @@
  // Modularizando a rota. Tem que chamar o app como paramentro na funcao
- module.exports = function(aplication) {
+ module.exports = function(application) {
 
      // variavel com atribuicao da execucao da funcao
     
 
      // Encapsulando a instrucao de DB
-     aplication.get('/noticias', function(req, res){
+     application.get('/noticias', function(req, res){
 
-        var connection = aplication.config.dbConnection();
-        var noticiasModel = aplication.app.models.noticiasModel;
+        var connection = application.config.dbConnection();
+        var noticiasModel = application.app.models.noticiasModel;
 
         noticiasModel.getNoticias(connection, function(error, result){
             //EJS criando views dinamicas com JS
