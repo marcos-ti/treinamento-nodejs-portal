@@ -4,8 +4,11 @@ var express = require('express');
 // Trazendo a instancia do modulo do Consign
 var consign = require('consign');
 
-// Incluindo o Middleware BodyParser
+// Incluindo o Middleware Body Parser
 var bodyParser = require('body-parser');
+
+// Incluindo o Middleware Express Validator
+var expressValidator = require('express-validator');
 
 // fazendo o retorno da funcao express
 var app = express();
@@ -18,6 +21,7 @@ app.set('views', './app/views');
 
 // Incluindo Middlewares
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressValidator());
 
 // Inclusao do diretorio Routes
 consign()
