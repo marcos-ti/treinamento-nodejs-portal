@@ -18,7 +18,8 @@ app.set('view engine', 'ejs');
 
 // Setando o diretorio de views padrao
 app.set('views', './app/views');
-
+// Incluindo arquivos estáticos
+app.use(express.static('./app/public'));
 // Incluindo Middlewares
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressValidator());
