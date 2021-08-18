@@ -15,6 +15,11 @@ NoticiasDAO.prototype.salvarNoticia = function(noticia, callback){
     this._connection.query('INSERT INTO noticias SET ?', noticia, callback);
 }
 
+// 5 ultimas noticias get5UltimasNoticias
+NoticiasDAO.prototype.get5UltimasNoticias = function(callback) {
+    this._connection.query('select * from noticias order by dat_criacao desc limit 5', callback);
+}
+
 module.exports = function(){
     return NoticiasDAO;
 }
